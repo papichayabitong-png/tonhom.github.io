@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papichaya Amput | 3D Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #0b0c10;
+            color: #ffffff;
+        }
+
+        /* Canvas Background */
+        #webgl {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            outline: none;
+        }
+
+        /* UI Overlay */
+        .content {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        .interactive {
+            pointer-events: auto;
+        }
+
+        .tag {
+            color: #66fcf1;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(102, 252, 241, 0.3);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #66fcf1;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #c5c6c7;
+            max-width: 650px;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #45a29e;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: #66fcf1;
+            border: 2px solid #66fcf1;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .btn:hover {
+            background: #66fcf1;
+            color: #0b0c10;
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.8);
+        }
+
+        /* Project Grid */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            max-width: 900px;
+        }
+
+        .card {
+            background: rgba(31, 40, 51, 0.85);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #45a29e;
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #66fcf1;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+    </style>
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- 3D Canvas -->
+    <canvas id="webgl"></canvas>
+
+    <!-- Overlay Contents -->
+    <main class="content">
+        <!-- Section 1: Hero / About -->
+        <section>
+            <div class="tag">Portfolio / ポートフォリオ</div>
+            <h1>ปพิชญา อ่ำพุฒ</h1>
+            <h2>Game & Animation Student</h2>
+            <p>
+                初めまして！ (ยินดีที่ได้รู้จักครับ)<br>
+                ผมชื่อ <span class="highlight">ปพิชญา อ่ำพุฒ</span> อายุ 22 ปี 
+                กำลังศึกษาอยู่ที่ <span class="highlight">มหาวิทยาลัยเทคโนโลยีราชมงคลรัตนโกสินทร์</span> 
+                คณะสถาปัตยกรรมศาสตร์ สาขาสื่อดิจิทัล (เอกเกมและแอนิเมชั่น) 
+                มีความหลงใหลในการสร้างสรรค์โลก 3D และ Interactive Experience
+            </p>
+            <a href="#projects" class="btn interactive">ดูผลงาน (Projects / 作品)</a>
+        </section>
+
+        <!-- Section 2: Projects -->
+        <section id="projects">
+            <div class="tag">Featured Works / 主な作品</div>
+            <h1>MY PROJECTS</h1>
+            <div class="card-container">
+                <div class="card interactive">
+                    <h3>3D Game Project</h3>
+                    <p>โครงการพัฒนาเกม 3D และการออกแบบสภาพแวดล้อม (Environment Design)</p>
+                </div>
+                <div class="card interactive">
+                    <h3>3D Animation</h3>
+                    <p>งานออกแบบตัวละครและอนิเมชัน 3D (Character Rigging & Animation)</p>
+                </div>
+                <div class="card interactive">
+                    <h3>Interactive Web 3D</h3>
+                    <p>การประยุกต์ใช้ Three.js สำหรับสร้างประสบการณ์บนเว็บไซต์แบบ 3 มิติ</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Contact -->
+        <section>
+            <div class="tag">Get In Touch / お問い合わせ</div>
+            <h1>CONTACT ME</h1>
+            <p>หากสนใจร่วมงาน หรือต้องการสอบถามข้อมูลเพิ่มเติม สามารถติดต่อได้เลยครับ</p>
+            <p style="font-size: 1rem; color: #66fcf1;">よろしくお願いいたします！ (ฝากตัวด้วยนะครับ)</p>
+            <a href="mailto:your-email@example.com" class="btn interactive">Send Message</a>
+        </section>
+    </main>
+
+    <!-- Three.js Logic -->
+    <script>
+        // 1. Scene & Camera Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector('#webgl'),
+            antialias: true
+        });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // 2. Main Object (Torus Knot - Wireframe Futuristic Feel)
+        const geometry = new THREE.TorusKnotGeometry(1.2, 0.35, 120, 16);
+        const material = new THREE.MeshStandardMaterial({ 
+            color: 0x66fcf1,
+            wireframe: true
+        });
+        const mainMesh = new THREE.Mesh(geometry, material);
+        scene.add(mainMesh);
+
+        // 3. Background Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 800;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 15;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0x45a29e
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // 4. Lighting
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
+
+        camera.position.z = 3;
+
+        // 5. Scroll & Mouse Interactions
+        let scrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) - 0.5;
+            mouseY = (event.clientY / window.innerHeight) - 0.5;
+        });
+
+        // 6. Responsive Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // 7. Animation Loop
+        const clock = new THREE.Clock();
+
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+
+            // Continuous Rotation
+            mainMesh.rotation.y = elapsedTime * 0.4;
+            mainMesh.rotation.x = elapsedTime * 0.2;
+            particlesMesh.rotation.y = -elapsedTime * 0.05;
+
+            // Scroll Parallax (Move Mesh based on page scroll)
+            mainMesh.position.y = - (scrollY / window.innerHeight) * 2.5;
+
+            // Smooth Mouse Movement Tracking
+            camera.position.x += (mouseX * 0.6 - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY * 0.6 - camera.position.y) * 0.05;
+
+            renderer.render(scene, camera);
+            window.requestAnimationFrame(animate);
+        };
+
+        animate();
+    </script>
+</body>
+</html>
