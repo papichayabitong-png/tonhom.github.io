@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Image Tracking AR</title>
+    <!-- 1. โหลดไลบรารี A-Frame และ Mind AR -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+
+    <!-- 2. ตั้งค่า MindAR ให้ลิงก์กับไฟล์ target ที่เราคอมไพล์ไว้ -->
+    <a-scene mindar-image="imageTargetSrc: targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        
+        <a-assets>
+            <!-- 3. โหลดรูปภาพที่จะให้เด้งขึ้นมาแสดง -->
+            <img id="popup-image" src="content.png">
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- 4. กำหนดเป้าหมาย (targetIndex: 0 คือรูปแรก) -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <!-- สั่งให้แสดงรูปภาพแบนๆ หรือจะทำเป็นระนาบที่ลอยขึ้นมา -->
+            <a-image src="#popup-image" position="0 0 0.2" height="1" width="1" rotation="0 0 0"></a-image>
+        </a-entity>
+        
+    </a-scene>
+
+</body>
+</html>
