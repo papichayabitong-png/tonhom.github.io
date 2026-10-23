@@ -14,14 +14,20 @@
   <a-assets>
     <a-asset-item id="glassesModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/scene.gltf"></a-asset-item>
     <a-asset-item id="headModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/sparkar/headOccluder.glb"></a-asset-item>
-    <a-asset-item id="hatModel" src="https://papichayabitong-png.github.io/tonhom.github.io/hat1.glb"></a-asset-item>
+    <a-asset-item id="hat1" src="https://https://papichayabitong-png.github.io/tonhom.github.io/hat1.glb"></a-asset-item>
   </a-assets>
   
 
 
   <!-- Anchor กับตำแหน่งบนใบหน้า -->
+  <a-entity mindar-face-target="anchorIndex: 1">
+    <a-box position="0 0 0" scale="0.1 0.1 0.1" color="red"></a-box>
+  </a-entity>
+  <a-entity mindar-face-target="anchorIndex: 263">
+    <a-box position="0 0 0" scale="0.1 0.1 0.1" color="black"></a-box>
+  </a-entity>
   <a-entity mindar-face-target="anchorIndex: 33">
-    <a-box position="0 0 0" scale="0.5 0.5 0.5" color="black"></a-box>
+    <a-box position="0 0 0" scale="0.1 0.1 0.1" color="black"></a-box>
   </a-entity>
   <a-entity mindar-face-target="anchorIndex: 168">
     <a-gltf-model 
@@ -30,8 +36,21 @@
     </a-gltf-model>
   </a-entity>
   </a-entity>
-  <a-entity mindar-face-target="anchorIndex: 266">
+  <a-entity mindar-face-target="anchorIndex: 10">
     <a-gltf-model 
-        rotation="0 0 0" position="0 0.35 0" scale="0.015 0.020 0.020" 
-        src="#hatModel"></a-gltf-model>
+        rotation="0 0 0" position="0 0 0" scale="1 1 1" 
+        src="#hat1">
+    </a-gltf-model>
   </a-entity>
+
+
+
+
+
+  <a-camera active="false" position="0 0 0"> </a-camera>
+
+</a-scene>
+</body>
+</html>                                                                                                              
+      
+ 
